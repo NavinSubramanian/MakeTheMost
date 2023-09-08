@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Coda&family=Comfortaa:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/sepitem.css' %}">
+
+    <title>ExploreIngredients</title>
+</head>
+
+<section>
+    <section id="header">
+        <div class="r1">
+            <img src="{% static 'images/logo.png' %}" alt="logo">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search here">
+        </div>
+        <div class="r2">
+            <h1>Explore Ingredients</h1>
+        </div>
+    </section>
+    <section style="background: url('{% static 'images/bg.png' %}');background-repeat: no-repeat;background-size: cover;height: auto;">
+        <div class="cr1">
+            <h4>Ingredients > <span class="fc">{{op.link}}</span></h4>
+        </div>
+        <section id="content">
+            <div class="within_box">
+                <div class="cr2">
+                    <h1>{{waste.link}}</h1>
+                </div>
+                <div class="cr3">
+                    <div class="cr3r1">
+                        <h1>Wastes</h1>
+                    </div>
+
+                    {% for op in waste %}
+
+                    <div class="cr3r2">
+                        <div class="cr3r2c1"><img src="{{op.wpic}}" alt="img_logo"></div>
+                        <div class="cr3r2c2">
+                            <h1>{{op.wname}}</h1>
+                            <div class="cr3r2c2p" style="margin-top: 30px;">
+                                <div class="pleft">Preserve Method</div>
+                                <div class="pright"><span style="margin-left: 10px;margin-right: 10px;">:</span>
+                                    {{op.wpre}}</div>
+                            </div>
+                            <div class="cr3r2c2p" style="margin-top: 30px;">
+                                <div class="pleft" style="text-align: center;">Used in</div>
+                                <div class="pright"><span style="margin-left: 10px; margin-right: 10px;">:</span><a href="#"
+                                        style="color: #D8393B;">{{op.wrecipe}} receipes</a></div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section>
+    </section>
+    <script src="https://kit.fontawesome.com/6f7bd953b1.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

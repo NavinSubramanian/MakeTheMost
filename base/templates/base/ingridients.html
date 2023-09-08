@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'styles/ingridients.css' %}">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Junge&family=Comfortaa:wght@500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="top">
+        <img src="{% static 'images/pngtree-healthy-food-png-image_314874-removebg-preview.png' %}" alt="" class="img__2">
+        <img src="{% static 'images/logo.png' %}" alt="" class="main__logo">
+        <div class="middle">
+          <div class="search">
+            <input type="text" class="searchTerm" placeholder="search here....">
+          </div>
+          <h1>search For the Ingrediants</h1>
+        </div>
+          
+        <img src="{% static 'images/salad.png' %}" alt="" class="img__1" style="mix-blend-mode: multiply;">
+      </div>
+      <div class="bottom" style="background: url('{% static 'images/bg.png' %}');background-repeat: no-repeat;background-size: cover;height: auto;">
+        <div class="available">
+          <h1>Or</h1>
+          <button>Check available recipes</button>
+        </div>
+        <div class="item__layout">
+          {% for op in all_item %}
+          <div class="items__">
+            <div class="item__details">
+              <img src="{{op.img}}" alt="">
+              <h1>{{op.name}}</h1>
+              <h4>{{op.number}} Wastes</h4>
+            </div>
+            <a href="{{op.link}}" style="cursor:pointer;"><button class="card-button">More info</button></a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

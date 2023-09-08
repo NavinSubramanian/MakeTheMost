@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+    integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="header__main">
+      <img src="{% static 'images/logo.png' %}" class="logo__tra col-3 col-md-2 col-lg-1">
+      <div class="navbar col-9 col-md-5">
+        <a class="nav-link nav-link-ltr col-3 col-md-1" href="#">Home</a>
+        <a class="nav-link nav-link-ltr col-3 col-md-1" href="#">About</a>
+        <a class="nav-link nav-link-ltr col-3 col-md-1" href="#">Contact</a>
+      </div>
+    </div>
+
+    <section class="main__home">
+      <div class="home__left col-md-6">
+        <div class="hl__content">
+          <h1>Savoring <br>Sustainability</h1>
+          <h3>Recipes from Waste <br> to Plate!</h3>
+        </div>
+      </div>
+      <div class="home__right col-md-5">
+        <div class="slider__wrapper carousel slide" id="carouselExampleCaptions" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner slider">
+            <div class="carousel-item active">
+              <img src="{% static 'images/Slide2.png' %}" class="" alt="..." id="slide__1">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'images/Slide2.png' %}" class="" alt="..." id="slide__2">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'images/Slide2.png' %}" class="" alt="..." id="slide__3">
+            </div>
+
+          </div>
+          <button class="carousel-control-prev d-md-none d-lg-none" type="button"
+            data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next d-md-none d-lg-none" type="button"
+            data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <!-- <div class="slider__nav">
+          <a href="#slide__1"></a>
+          <a href="#slide__2"></a>
+          <a href="#slide__3"></a>
+        </div> -->
+      </div>
+    </section>
+    <section class="about__home">
+      <div class="about__1">
+        <div class="about1__left">
+          <div class="about1__lefti"><img src="{% static 'images/Union.png' %}"></div>
+
+        </div>
+        <div class="about1__right">
+          <h1>Mission</h1>
+          <h3>Our mission is to inspire and empower home cooks, food enthusiasts, and chefs to embrace sustainable
+            cooking practices by showcasing delightful recipes that repurpose food wastes. Through our platform, we aim
+            to raise awareness about the global food waste crisis and encourage conscious choices in the kitchen.</h3>
+        </div>
+      </div>
+      <div class="about__2">
+        <img src="{% static 'images/Line 1.png' %}">
+      </div>
+      <div class="about__3">
+        <div class="about3__left col-md-6">
+          <h4>Methods to <span style="color: #D8393B;">prepare</span><br>and <span style="color: #D8393B;">preserve
+            </span>the ingredients</h4>
+          <a href="ingridients/"><button style="cursor: pointer;">Search for items</button></a>
+        </div>
+        <div class="about3__right col-md-6">
+          <img src="{% static 'images/Rectangle 24.png' %}">
+        </div>
+      </div>
+      <div class="about__4">
+        <div class="about4__l1">
+          <h1>Recipes</h1>
+        </div>
+        <div class="about4__l2">
+          <h6>Check out the premade recipes</h6>
+        </div>
+        <div class="about4__slider">
+          <div class="a4__sliderimages">
+            <img src="{% static 'images/Group1.png' %}" alt="leftimg" class="leftimg">
+            <img src="{% static 'images/Group2.png' %}" alt="rightimg" class="rightimg">
+            <img src="{% static 'images/Group3.png' %}" alt="midimg" class="midimg">
+          </div>
+          <div class="about4__foodname col-md-12">
+            <h2>Curry</h2>
+          </div>
+
+        </div>
+
+
+
+      </div>
+    </section>
+    <section id="footer">
+      <div class="foot">
+        <div class="foot__heading">
+          <h1>Contact Us</h1>
+          <hr>
+        </div>
+        <div class="footer__logos ">
+          <i class="fa-brands fa-square-instagram fa-2x"></i>
+          <i class="fa-brands fa-github fa-2x"></i>
+          <i class="fa-brands fa-linkedin fa-2x"></i>
+        </div>
+      </div>
+      <div class="nextButton">
+        <i class="fa-solid fa-arrow-right fa-3x"></i>
+      </div>
+
+    </section>
+
+
+
+  </div>
+
+  
+  <script src="script.js"></script>
+  <script src="https://kit.fontawesome.com/6f7bd953b1.js" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
