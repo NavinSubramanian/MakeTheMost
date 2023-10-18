@@ -10,3 +10,6 @@ class ContentAdmin(admin.ModelAdmin):
 
 admin.site.register(Items,ContentAdmin)
 admin.site.register(Waste)
+admin.site.register(RecipeList)
+admin.site.register(RecipeDetail)
+admin.site.register(Comment)

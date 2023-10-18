@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+    integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Coda&family=Comfortaa:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'styles/recipedetail.css' %}">
+  <title>Receipe Steps</title>
+</head>
+<body>
+  <section id="header">
+    <div class="r1" style="flex-direction: column;position: relative;">
+        <img src="{% static 'images/pngtree-healthy-food-png-image_314874-removebg-preview.png' %}" alt="" class="img__2">
+        <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" class="logo"></a>
+        <h1 style="font-family: 'Junge';">Explore Ingredients</h1>
+        <img src="{% static 'images/spinach.png' %}" alt="" class="img__4" style="position: absolute;right: 0px;bottom: 0;">
+    </div>
+</section>
+
+  {% for op in mainrecipe %}
+
+  <div class="mid_content" style="background: url('{% static 'images/bg.png' %}');background-repeat: no-repeat;background-size: cover;height: auto;padding-bottom:100px">
+    {% for os in al %}
+      {% for on in waste %}
+    <div class="content_links">
+      <h3><a href="/ingridients" style="text-decoration: none;color: black;">Ingredients</a> &#62;<a href="/ingridients/{{os.link}}" style="text-decoration: none;color: black;"> {{os.name}}</a> &#62;<a href="/ingridients/{{os.link}}/{{on.wname}}/" style="text-decoration: none;color: black;">{{on.wname}}</a> &#62; <span style="color: #D8393B;">{{op.recipename}}</span></h3>
+    </div>
+      {% endfor %}
+    {% endfor %}
+    <div class="content_boxout">
+      <div class="content_box" style="background-color: rgba(255, 255, 255, 0.322);backdrop-filter: blur(7px);">
+        
+        <div class="content">
+          <div class="receipe_name"><h1>{{op.recipename}}</h1></div>
+          <div class="receipe_time"><h6 style="color: #D8393B;font-family: 'comfortaa';">30 mins</h6></div>
+          <div class="receipe_info"><h5 style="font-family: 'Comfortaa';">{{op.recipedesc}}</h5></div>
+          <div class="receipe_image"><img src="{{op.recipeimage}}" style="height: 300px;width: 400px;border-radius: 7%;" alt="img"></div>
+          <div class="content_ingredients">
+            <div class="ingri_title"><h1 style="font-family: 'Jungee';text-decoration: underline #D8393B;">Ingredients</h1></div>
+            <div class="ingri_list">
+              <ul>
+                {{op.recipeingrediants|safe}}
+              </ul>
+            </div>
+          </div>
+          <div class="content_steps">
+            <div class="steps_title"><h1 style="font-family: 'Jungee';text-decoration: underline #D8393B;">Steps</h1></div>
+            <div class="steps_list">
+              <ol>
+                {{op.recipesteps|safe}}
+              </ol>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="comment-section">
+      <h4>Comment Section</h4>
+      <div class="comment">
+        {% for os in al %}
+        {% for on in waste %}
+        <form action="/ingridients/{{os.link}}/{{on.wname}}/" method="POST">
+        {% endfor %}
+        {% endfor %}
+          {% csrf_token %} 
+          <textarea name="commentt" id="" placeholder="Write comment....."></textarea>
+          <button type="submit" name="post">Post</button>
+        </form>
+      </div>
+      <div class="csect">
+        {% for comment in r.comments.all %}
+        <strong>
+          {{comment.user}}
+          {{comment.date_added}}
+        </strong>
+        <br/>
+        {{comment.body}}
+        <br/>
+        <hr>
+        <br/>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+
+  <div  style="background: url('{% static 'images/footer.png' %}');position: relative;bottom:120px;height:50%;z-index: 11;">
+    <section id="footer" style="position: relative;top: 100px;">
+      <div class="foot">
+        <div class="foot__heading" style="width: 150px;height: 150px;">
+          <img src="{% static 'images/logo.png' %}" alt="" style="width: 100%;height: 100%;">
+          <hr style="margin: 0;">
+        </div>
+        <div class="footer__logos ">
+          <i class="fa-brands fa-square-instagram fa-2x"></i>
+          <i class="fa-brands fa-github fa-2x"></i>
+          <i class="fa-brands fa-linkedin fa-2x"></i>
+        </div>
+        <hr style="margin: 0;">
+        <div class="foot__text">
+          <h5>About</h5>
+          <h5>Contact</h5>
+          <h5>Privacy Policy</h5>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  
+  <script src="https://kit.fontawesome.com/6f7bd953b1.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

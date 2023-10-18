@@ -10,7 +10,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet">
@@ -24,36 +23,50 @@
     <title>ExploreIngredients</title>
 </head>
 
-<section>
+<body>
     <section id="header">
-        <div class="r1">
-            <img src="{% static 'images/logo.png' %}" alt="logo">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search here">
-        </div>
-        <div class="r2">
-            <h1>Explore Ingredients</h1>
+        <div class="r1" style="flex-direction: column;position: relative;">
+            <img src="{% static 'images/pngtree-healthy-food-png-image_314874-removebg-preview.png' %}" alt="" class="img__2">
+            <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" class="logo"></a>
+            <h1 style="font-family: 'Junge';">Explore Ingredients</h1>
+            <img src="{% static 'images/spinach.png' %}" alt="" class="img__4" style="position: absolute;right: 0px;bottom: 0;">
         </div>
     </section>
-    <section style="background: url('{% static 'images/bg.png' %}');background-repeat: no-repeat;background-size: cover;height: auto;">
+    
+
+    <section
+        style="background: url('{% static 'images/bg.png' %}');background-repeat: no-repeat;background-size: cover;height: auto;padding-bottom:100px;z-index: 10;">
+    
+        {% for op in waste %}    
+        
         <div class="cr1">
-            <h4>Ingredients > <span class="fc">{{op.link}}</span></h4>
+            {% if forloop.first %}
+            <h4><a href="/ingridients" style="text-decoration: none;color: black;">Ingredients</a> > <span class="fc">{{op.link}}</span></h4>
+            {% endif %}
         </div>
+    
+        {% endfor %}
+
         <section id="content">
             <div class="within_box">
+
+                {% for op in waste %}    
+                {% if forloop.first %}
                 <div class="cr2">
-                    <h1>{{waste.link}}</h1>
+                    <h1>{{op.link}}</h1>
                 </div>
+                {% endif %}
+                {% endfor %}
+
                 <div class="cr3">
                     <div class="cr3r1">
                         <h1>Wastes</h1>
                     </div>
 
                     {% for op in waste %}
-
                     <div class="cr3r2">
-                        <div class="cr3r2c1"><img src="{{op.wpic}}" alt="img_logo"></div>
-                        <div class="cr3r2c2">
+                        <div class="cr3r2c1"><img src="{{op.wpic}}" alt="img_logo" style="height: 250px;width: 400px;border-radius: 10%;"></div>
+                        <div class="cr3r2c2" style="width: 500px;display: flex;flex-direction: column;place-items: center;">
                             <h1>{{op.wname}}</h1>
                             <div class="cr3r2c2p" style="margin-top: 30px;">
                                 <div class="pleft">Preserve Method</div>
@@ -62,18 +75,42 @@
                             </div>
                             <div class="cr3r2c2p" style="margin-top: 30px;">
                                 <div class="pleft" style="text-align: center;">Used in</div>
-                                <div class="pright"><span style="margin-left: 10px; margin-right: 10px;">:</span><a href="#"
-                                        style="color: #D8393B;">{{op.wrecipe}} receipes</a></div>
+                                <div class="pright"><span style="margin-left: 10px; margin-right: 10px;">:</span><a
+                                        href="{{op.wname}}" style="color: #D8393B;">{{op.wrecipe}} receipes</a></div>
                             </div>
                         </div>
                     </div>
-            
                     {% endfor %}
 
                 </div>
             </div>
         </section>
     </section>
+
+
+    <div
+        style="background: url('{% static 'images/footer.png' %}');position: relative;bottom:120px;height:50%;z-index: 11;">
+        <section id="footer" style="position: relative;top: 100px;">
+            <div class="foot">
+                <div class="foot__heading" style="width: 150px;height: 150px;">
+                    <img src="{% static 'images/logo.png' %}" alt="" style="width: 100%;height: 100%;">
+                    <hr style="margin: 0;">
+                </div>
+                <div class="footer__logos ">
+                    <i class="fa-brands fa-square-instagram fa-2x"></i>
+                    <i class="fa-brands fa-github fa-2x"></i>
+                    <i class="fa-brands fa-linkedin fa-2x"></i>
+                </div>
+                <hr style="margin: 0;">
+                <div class="foot__text">
+                    <h5>About</h5>
+                    <h5>Contact</h5>
+                    <h5>Privacy Policy</h5>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <script src="https://kit.fontawesome.com/6f7bd953b1.js" crossorigin="anonymous"></script>
 
 </body>

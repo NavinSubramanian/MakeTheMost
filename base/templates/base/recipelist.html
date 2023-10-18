@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Coda&family=Comfortaa:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/recipelist.css' %}">
+    <title>Receipes</title>
+</head>
+
+<body>
+    <section id="header">
+        <div class="r1" style="flex-direction: column;position: relative;">
+            <img src="{% static 'images/pngtree-healthy-food-png-image_314874-removebg-preview.png' %}" alt="" class="img__2">
+            <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" class="logo"></a>
+            <h1 style="font-family: 'Junge';">Explore Ingredients</h1>
+            <img src="{% static 'images/spinach.png' %}" alt="" class="img__4" style="position: absolute;right: 0px;bottom: 0;">
+        </div>
+    </section>
+
+
+    <div class="mid_content" style="background: url('{% static 'images/bg.png' %}');background-repeat: no-repeat;background-size: cover;height: auto;padding-bottom:100px">
+        {% for os in al %}
+        {% if forloop.first %}
+        <div class="content_links">
+            <h3><a href="/ingridients" style="text-decoration: none;color: black;">Ingredients</a> &#62;<a href="/ingridients/{{os.link}}" style="text-decoration: none;color: black;"><span>{{os.name}}</span></a>&#62; <span style="color: #D8393B;">{{op.wname}}</span> </h3>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <div class="content_boxout">
+            <div class="content_box" style="background-color: rgba(255, 255, 255, 0.264);backdrop-filter: blur(5px);">
+                <div class="content_top">
+                    {% for op in recipe %}
+                    {% if forloop.first %}
+                    <div class="ct_h1">
+                        <h1>Receipes with {{op.wname}}</h1>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+                {% for op in recipe %}
+                <div class="content_mid">
+                    <div class="content_mleft">
+                        <div class="content_mlr1">
+                            <h1>{{op.recipename}}</h1>
+                        </div>
+                        <div class="content_mlr2">
+                            <h6> {{op.recipetime}} mins</h6>
+                        </div>
+                        <div class="content_mlr3"><button><a href="{{op.recipelink}}">View recipe</a></button></div>
+                    </div>
+                    <div class="content_mright">
+                        <div class="content_mri"><img src="{{op.recipeimg}}" style="height: 275px;width: 400px;border-radius: 7%;"></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div  style="background: url('{% static 'images/footer.png' %}');position: relative;bottom:120px;height:50%;z-index: 11;">
+        <section id="footer" style="position: relative;top: 100px;">
+          <div class="foot">
+            <div class="foot__heading" style="width: 150px;height: 150px;">
+              <img src="{% static 'images/logo.png' %}" alt="" style="width: 100%;height: 100%;">
+              <hr style="margin: 0;">
+            </div>
+            <div class="footer__logos ">
+              <i class="fa-brands fa-square-instagram fa-2x"></i>
+              <i class="fa-brands fa-github fa-2x"></i>
+              <i class="fa-brands fa-linkedin fa-2x"></i>
+            </div>
+            <hr style="margin: 0;">
+            <div class="foot__text">
+              <h5>About</h5>
+              <h5>Contact</h5>
+              <h5>Privacy Policy</h5>
+            </div>
+          </div>
+        </section>
+    </div>
+
+
+    <script src="https://kit.fontawesome.com/6f7bd953b1.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

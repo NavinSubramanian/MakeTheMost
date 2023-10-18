@@ -1,0 +1,174 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+body{
+    background-color: #EAFFEC;
+}
+
+.main__container{
+    display: flex;
+    column-gap: 5%;
+    height: auto;
+}
+
+.filter{
+    flex-basis: 20%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+}
+
+.recipe__layout{
+    flex-basis: 75%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3,330px);
+    column-gap: 40px;
+    row-gap: 40px;
+    grid-template-rows: 400px;
+    height: auto;
+    background-color: #EAFFEC;
+}
+
+.main__logo{
+    height: 175px;
+    width: 175px;
+}
+
+.items{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 2s;
+}
+.items img{
+    height: 150px;
+    width: 150px;
+}
+.items p{
+    text-align: center;
+}
+.items div{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+}
+.items div button{
+    width: 130px;
+    border-radius: 15px;
+    border: none;
+    height: 35px;
+    font-family: 'Poppins';
+    background-color: #D8393B;
+    color: white;
+}
+.items:hover{
+    transform: scale(1.025);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.filter div:hover{
+    transform: translateX(5px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer */
+
+
+#footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .nextButton i {
+    background-color: #D8393B;
+    color: white;
+    padding: 10px 13px 10px 13px;
+    border-radius: 60px;
+    cursor: pointer;
+    position: relative;
+    left: 120px;
+  }
+  
+  .foot {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 40%;
+  }
+  
+  .foot__heading {
+    font-family: 'Jungee';
+  }
+  
+  .foot__heading hr, .foot hr {
+    color: #D8393B;
+    border: 1px solid #D8393B;
+    opacity: 100%;
+  }
+  
+  .footer__logos {
+    margin-top: 20px;
+    color: #D8393B;
+  }
+  
+  .footer__logos i {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .foot__text{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  .foot__text h5{
+    font-family: 'Comfortaa';
+    cursor: pointer;
+    position: relative;
+    top: 20px;
+    font-size: 15px;
+    color: #D8393B;
+    transition: 1s;
+  }
+  .foot__text h5:hover{
+    color: #000000;
+  }
+  
+  
+  @media (max-width:540px) {
+    .nextButton i {
+      margin-left: 30px;
+      padding: 5px 7px 5px 7px;
+      left: 30px;
+    }
+  
+    .foot {
+      left: 0px;
+    }
+  }

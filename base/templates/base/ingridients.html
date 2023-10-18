@@ -6,45 +6,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="{% static 'styles/ingridients.css' %}">
-    <link rel="stylesheet" href="normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Junge&family=Comfortaa:wght@500&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
     <div class="container">
-      <div class="top">
+      <div class="top" style="position: relative;">
         <img src="{% static 'images/pngtree-healthy-food-png-image_314874-removebg-preview.png' %}" alt="" class="img__2">
-        <img src="{% static 'images/logo.png' %}" alt="" class="main__logo">
+        <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="" class="main__logo"></a>
         <div class="middle">
-          <div class="search">
-            <input type="text" class="searchTerm" placeholder="search here....">
+          <div class="ssearch">
+            <form method=POST action="{% url 'search-ingi' %}">
+              {% csrf_token %}
+              <input type="text" class="searchTerm" placeholder="search here...." name="searched">
+            </form>
           </div>
-          <h1>search For the Ingrediants</h1>
+          <h1>Search For the Ingredients</h1>
         </div>
-          
+        
         <img src="{% static 'images/salad.png' %}" alt="" class="img__1" style="mix-blend-mode: multiply;">
+        <img src="{% static 'images/spinach.png' %}" alt="" class="img__4" style="position: absolute;right: -30px;bottom: 0;">
       </div>
-      <div class="bottom" style="background: url('{% static 'images/bg.png' %}');background-repeat: no-repeat;background-size: cover;height: auto;">
+      <div class="bottom" style="background: url('{% static 'images/bg.png' %}');background-repeat: no-repeat;background-size: cover;height: auto;padding-bottom:200px;z-index: 10;">
         <div class="available">
           <h1>Or</h1>
-          <button>Check available recipes</button>
+          <a href="/findrecipe" style="text-decoration: none; color: black;"><button>Check available recipes</button></a>
         </div>
         <div class="item__layout">
           {% for op in all_item %}
           <div class="items__">
             <div class="item__details">
-              <img src="{{op.img}}" alt="">
+              <img src="{{op.img}}" alt="" style="mix-blend-mode: multiply;">
               <h1>{{op.name}}</h1>
               <h4>{{op.number}} Wastes</h4>
             </div>
-            <a href="{{op.link}}" style="cursor:pointer;"><button class="card-button">More info</button></a>
+            <a href="{{op.link}}" style="cursor:pointer;"><button class="card-button" style="cursor: pointer;">More info</button></a>
           </div>
           {% endfor %}
         </div>
       </div>
     </div>
+    <div  style="background: url('{% static 'images/footer.png' %}');position: relative;bottom:120px;height:50%;z-index: 11;">
+      <section id="footer" style="position: relative;top: 100px;">
+        <div class="foot">
+          <div class="foot__heading" style="width: 150px;height: 150px;">
+            <img src="{% static 'images/logo.png' %}" alt="" style="width: 100%;height: 100%;">
+            <hr style="margin: 0;">
+          </div>
+          <div class="footer__logos ">
+            <i class="fa-brands fa-square-instagram fa-2x"></i>
+            <i class="fa-brands fa-github fa-2x"></i>
+            <i class="fa-brands fa-linkedin fa-2x"></i>
+          </div>
+          <hr style="margin: 0;">
+          <div class="foot__text">
+            <h5>About</h5>
+            <h5>Contact</h5>
+            <h5>Privacy Policy</h5>
+          </div>
+        </div>
+      </section>
+    </div>
+      
   </body>
 </html>

@@ -12,7 +12,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="normalize.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet">
@@ -28,13 +27,20 @@
     <div class="header__main">
       <img src="{% static 'images/logo.png' %}" class="logo__tra col-3 col-md-2 col-lg-1">
       <div class="navbar col-9 col-md-5">
-        <a class="nav-link nav-link-ltr col-3 col-md-1" href="#">Home</a>
-        <a class="nav-link nav-link-ltr col-3 col-md-1" href="#">About</a>
-        <a class="nav-link nav-link-ltr col-3 col-md-1" href="#">Contact</a>
+        <a class="nav-link nav-link-ltr col-3 col-md-1" href="#main_ho">Home</a>
+        <a class="nav-link nav-link-ltr col-3 col-md-1" href="#about_ho">About</a>
+        <a class="nav-link nav-link-ltr col-3 col-md-1" href="#footer">Contact</a>
       </div>
+      {% if request.user.is_authenticated %}
+      <div style="display: flex;align-items: center;justify-content: center;flex-direction: column;">
+        <span class="check">Hello, {{request.user}}</span>
+        <span><a href="/logout">Logout</a></span>
+      </div>
+      {% endif %}
+      
     </div>
 
-    <section class="main__home">
+    <section class="main__home" id="main_ho">
       <div class="home__left col-md-6">
         <div class="hl__content">
           <h1>Savoring <br>Sustainability</h1>
@@ -53,13 +59,13 @@
           </div>
           <div class="carousel-inner slider">
             <div class="carousel-item active">
-              <img src="{% static 'images/Slide2.png' %}" class="" alt="..." id="slide__1">
+              <img src="{% static 'images/img1.jpg' %}" class="" alt="..." id="slide__1">
             </div>
             <div class="carousel-item">
-              <img src="{% static 'images/Slide2.png' %}" class="" alt="..." id="slide__2">
+              <img src="{% static 'images/img2.jpg' %}" class="" alt="..." id="slide__2">
             </div>
             <div class="carousel-item">
-              <img src="{% static 'images/Slide2.png' %}" class="" alt="..." id="slide__3">
+              <img src="{% static 'images/img3.jpg' %}" class="" alt="..." id="slide__3">
             </div>
 
           </div>
@@ -81,7 +87,7 @@
         </div> -->
       </div>
     </section>
-    <section class="about__home">
+    <section class="about__home" id="about_ho">
       <div class="about__1">
         <div class="about1__left">
           <div class="about1__lefti"><img src="{% static 'images/Union.png' %}"></div>
@@ -128,6 +134,24 @@
 
 
 
+      </div>
+      <div class="about__5">
+        <div class="about5__left">
+          <h2>Or enter the ingredients which you have at home to view what recipes we offer you</h2>
+          <a href="/findrecipe" style="text-decoration: none;color: #D8393B;"><button>Get started</button></a>
+        </div>
+        <div class="about5__right">
+          <img src="{% static 'images/img91.png' %}" alt="">
+        </div>
+      </div>
+      <div class="about__6">
+        <div class="about6__left">
+          <img src="{% static 'images/community.png' %}">
+        </div>
+        <div class="about6__right">
+          <h3>Interact within a good community</h3>
+          <button><a href="/signup">Join now!</a></button>
+        </div>
       </div>
     </section>
     <section id="footer">

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/findrecipe.css' %}">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Junge&family=Comfortaa:wght@500&family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <section class="main__container">
+        <section class="filter">
+            <img src="{% static 'images/logo.png' %}" alt="" class="main__logo">
+            <div style="display: flex;column-gap: 30px;justify-content: flex-start;width: 50%;align-items: center;transition: 1s;">
+                <i class="fa-solid fa-house"></i>
+                <a href="{% url 'home' %}" style="text-decoration: none;color: black;"><h3 style="margin: 0;">Home</h3></a>
+            </div>
+            <div style="display: flex;column-gap: 30px;justify-content: flex-start;width: 50%;align-items: center;transition: 1s;">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <a href="/ingridients" style="text-decoration: none;color: black;"><h3 style="margin: 0;">Ingridients</h3></a>
+            </div>
+            <div style="display: flex;column-gap: 30px;justify-content: flex-start;width: 50%;align-items: center;transition: 1s;">
+                <i class="fa-solid fa-phone"></i>
+                <a href="{% url 'home' %}" style="text-decoration: none;color: black;"><h3 style="margin: 0;">Contact</h3></a>
+            </div>
+            <hr style="width: 80%;margin: 25px 0;">
+            <form action="" style="width:80%;">
+                <h1>Filter</h1>
+                <p>Time required</p>
+                <input type="radio" id="fast" name="time_taken" value="Fast">
+                <label for="fast">Fast</label><br>
+                <input type="radio" id="slow" name="time_taken" value="Slow">
+                <label for="slow">Slow</label><br>
+                <hr>
+                <p>Reviews</p>
+                <input type="radio" id="best" name="reviews" value="Best">
+                <label for="best">Best</label><br>
+                <input type="radio" id="mediocre" name="reviews" value="Mediocre">
+                <label for="mediocre">Mediocre</label><br>
+                <input type="radio" id="meh" name="reviews" value="Meh">
+                <label for="meh">Meh</label><br>
+            </form>
+        </section>
+        <section class="recipe__layout">
+
+            {% for ol in recipe %}
+            <div class="items">
+                <h1 style="color: #D8393B;">{{ol.recipename}}</h1>
+                <img src="{{ol.recipeimg}}" alt="" style="height: 130px;width: 130px;border-radius: 50%;">
+                <p>{{ol.resdesc|slice:":100"}}...</p>
+                <div>
+                    <h4>{{ol.recipetime}} mins</h4>
+                    <button><a href="/ingridients/{{ol.itemlink}}/{{ol.wname}}/{{ol.recipelink}}" style="text-decoration: none;color: white;">Check it out</a></button>
+                </div>
+            </div>
+            {% endfor %}
+
+        </section>
+    </section>
+
+    <div style="border-top: 2px solid rgba(0, 0, 0, 0.338);">
+        <section id="footer" style="position: relative;">
+          <div class="foot">
+            <div class="foot__heading" style="width: 150px;height: 150px;">
+              <img src="{% static 'images/logo.png' %}" alt="" style="width: 100%;height: 100%;">
+              <hr style="margin: 0;">
+            </div>
+            <div class="footer__logos ">
+              <i class="fa-brands fa-square-instagram fa-2x"></i>
+              <i class="fa-brands fa-github fa-2x"></i>
+              <i class="fa-brands fa-linkedin fa-2x"></i>
+            </div>
+            <hr style="margin: 0;">
+            <div class="foot__text">
+              <h5>About</h5>
+              <h5>Contact</h5>
+              <h5>Privacy Policy</h5>
+            </div>
+          </div>
+        </section>
+    </div>
+</body>
+</html>
